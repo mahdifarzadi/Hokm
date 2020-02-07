@@ -22,7 +22,9 @@ class AccountMenuPage: Page() {
                     Controller.signUp(command.split(" ")[1], pass)
                 }
                 command.matches("login .*".toRegex()) -> {
-
+                    println("password:")
+                    val pass = scanner.nextLine()
+                    Controller.signIn(command.split(" ")[1], pass)
                 }
                 command.matches("logout".toRegex()) -> {
 
