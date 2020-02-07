@@ -3,15 +3,24 @@ package view.pages
 import model.user.User
 import java.util.*
 
-class Page {
-    val user = User.getUser()
-    private val pages: Deque<Page> = LinkedList<Page>()
+abstract class Page {
+    //open val user = User.getUser()
 
-    fun push(newPage: Page){
-        pages.push(newPage)
+    companion object {
+        private val pages: Deque<Page> = LinkedList<Page>()
+
+        fun go(newPage: Page) {
+            pages.push(newPage)
+        }
+
+        fun back() {
+            pages.pop()
+        }
     }
 
-    fun pop(){
-        pages.pop()
-    }
+    open fun getCommand() {}
+
+    open fun help() {}
+
+    open fun showMenu() {}
 }
