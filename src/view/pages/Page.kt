@@ -1,21 +1,26 @@
 package view.pages
 
-import model.user.User
 import java.util.*
 
 abstract class Page {
-    //open val user = User.getUser()
 
     companion object {
-        private val pages: Deque<Page> = LinkedList<Page>()
+        /*val pages: Deque<Page> = LinkedList<Page>()
 
         fun go(newPage: Page) {
             pages.push(newPage)
         }
 
         fun back() {
-            pages.pop()
-        }
+            if (pages.peek() != null)
+                pages.pop()
+            else println("err in pop")
+        }*/
+    }
+
+    init {
+        showMenu()
+        getCommand()
     }
 
     open fun getCommand() {}

@@ -1,9 +1,14 @@
 package controllers.consoleController
 
 import model.user.User
+import view.pages.AccountMenuPage
+import view.pages.MainMenuPage
+import view.pages.Page
 
 class Controller {
     companion object {
+
+        ///////////////////////////account///////////////////////////////
 
         fun signUp(userName: String, password: String) {
             User.users.forEach {
@@ -14,7 +19,8 @@ class Controller {
                 }
             }
             User.signUp(userName, password)
-            println("signed up")
+//            Page.go(MainMenuPage())
+            MainMenuPage()
         }
 
         fun signIn(userName: String, password: String) {
@@ -23,7 +29,8 @@ class Controller {
                     if (it.password == password){
                         //sign in
                         User.signIn(userName)
-                        println("signed in")
+//                        Page.go(MainMenuPage())
+                        MainMenuPage()
                     } else println("error") //show error
                     return
                 }
@@ -37,6 +44,15 @@ class Controller {
                 println("${it.name}, ${it.password}")
             }
 //            println("${User.user.name}, ${User.user.password}")
+        }
+
+
+
+        //////////////////////////main menu//////////////////////////////
+
+        fun signOut(){
+            User.user = User("guest", "1234")
+            AccountMenuPage()
         }
     }
 }
